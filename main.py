@@ -8,7 +8,8 @@ import time
 ###
 
 def simple_work_calc(n, a, b):
-	"""Compute the value of the recurrence $W(n) = aW(n/b) + n
+  return a*(n/b)+n
+"""Compute the value of the recurrence $W(n) = aW(n/b) + n
 
 	Params:
 	n......input integer
@@ -18,10 +19,11 @@ def simple_work_calc(n, a, b):
 	Returns: the value of W(n).
 	"""
 	# TODO
-	pass
+
 
 def work_calc(n, a, b, f):
-	"""Compute the value of the recurrence $W(n) = aW(n/b) + f(n)
+  return a*(n/b) + f(n)
+"""Compute the value of the recurrence $W(n) = aW(n/b) + f(n)
 
 	Params:
 	n......input integer
@@ -33,10 +35,18 @@ def work_calc(n, a, b, f):
 	Returns: the value of W(n).
 	"""
 	# TODO
-	pass
+  
+
 
 def span_calc(n, a, b, f):
-	"""Compute the span associated with the recurrence $W(n) = aW(n/b) + f(n)
+  if n == 1:
+    return f(1)
+
+  children_spans = [span_calc(n // b, a, b, f) for _ in range(a)]
+  total_span = f(n) + sum(children_spans)
+
+  return total_span
+"""Compute the span associated with the recurrence $W(n) = aW(n/b) + f(n)
 
 	Params:
 	n......input integer
@@ -47,8 +57,7 @@ def span_calc(n, a, b, f):
 
 	Returns: the value of W(n).
 	"""
-	# TODO
-	pass
+  
 
 
 
